@@ -5,16 +5,16 @@ import * as yup from 'yup';
 // import { Form, Submit, Input, ErrorMessage } from './ContactForm.styled';
 import { TextField, Button, Typography, Paper, Box, Grid } from '@mui/material';
 
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  number: yup
-    .string()
-    .required('This field is Required')
-    .matches(
-      /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
-      'Phone number is not valid'
-    ),
-});
+// const schema = yup.object().shape({
+//   name: yup.string().required(),
+//   number: yup
+//     .string()
+//     .required('This field is Required')
+//     .matches(
+//       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
+//       'Phone number is not valid'
+//     ),
+// });
 
 export const ContactForm = ({ addContact }) => {
   const validationSchema = yup.object().shape({
