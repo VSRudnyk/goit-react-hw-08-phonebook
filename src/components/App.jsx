@@ -8,10 +8,10 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="contacts" element={<ContactsView />} />
+        <Route index element={<ContactsView />} />
         <Route path="register" element={<RegisterView />} />
         <Route path="login" element={<LoginView />} />
-        <Route path="*" element={<Navigate to="contacts" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );

@@ -1,68 +1,62 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations';
+import { useLoginMutation } from 'redux/authAPI';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import {
+  Form,
+  Input,
+  Submit,
+  ErrorMessage,
+  Container,
+} from './LoginView.styled';
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Invalid email format')
+    .required('Mail is required'),
+  password: yup
+    .string()
+    .required('No password provided.')
+    .min(8, 'Password is too short - should be 8 chars minimum.')
+    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+});
 
 export default function LoginView() {
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [logIn] = useLoginMutation();
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
-  };
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(authOperations.logIn({ email, password }));
-    setEmail('');
-    setPassword('');
+  const onSubmit = values => {
+    logIn(values);
+    resetField('email');
+    resetField('password');
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <Container>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="email">Email</label>
+        <Input type="text" id="email" name="email" {...register('email')} />
+        <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <label style={styles.label}>
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label style={styles.label}>
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+        <label htmlFor="password">Password</label>
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          {...register('password')}
+        />
+        <ErrorMessage>{errors.number?.message}</ErrorMessage>
+        <Submit type="submit">Log in</Submit>
+      </Form>
+    </Container>
   );
 }
