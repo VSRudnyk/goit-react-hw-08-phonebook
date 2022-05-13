@@ -14,25 +14,25 @@ export const authAPI = createApi({
   }),
   endpoints: builder => ({
     fetchCurrentUser: builder.query({
-      query: () => '/users/current',
+      query: () => 'users/current',
     }),
     login: builder.mutation({
       query: credentials => ({
-        url: '/users/login',
+        url: 'users/login',
         method: 'POST',
         body: credentials,
       }),
     }),
     register: builder.mutation({
       query: credentials => ({
-        url: '/users/signup',
+        url: 'users/signup',
         method: 'POST',
         body: credentials,
       }),
     }),
     logout: builder.mutation({
       query: credentials => ({
-        url: '/users/logout',
+        url: 'users/logout',
         method: 'POST',
         body: credentials,
       }),

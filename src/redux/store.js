@@ -26,12 +26,15 @@ export const store = configureStore({
     [authAPI.reducerPath]: authAPI.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware({
       serializableCheck: {
-        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    contactsAPI.middleware,
+    authAPI.middleware,
+  ],
   devTools: process.env.NODE_ENV === 'development',
 });
 
