@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-// import { getUsername } from 'redux/authSlice';
 import authSelectors from 'redux/authSelectors';
 import { useLogoutMutation } from 'redux/authAPI';
 import defaultAvatar from './default-avatar.png';

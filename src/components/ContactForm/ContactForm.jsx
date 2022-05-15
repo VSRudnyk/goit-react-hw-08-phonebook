@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import PropTypes from 'prop-types';
 import { useAddContactMutation } from 'redux/myContactsSlice';
 import { TextField, Button, Typography, Paper, Box, Grid } from '@mui/material';
 import { Container } from './ContactForm.styled';
@@ -100,4 +101,8 @@ export const ContactForm = ({ addContact }) => {
       </Paper>
     </Container>
   );
+};
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
 };
