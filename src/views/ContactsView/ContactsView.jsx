@@ -8,14 +8,14 @@ import { Filter } from 'components/Filter/Filter';
 import { useGetContactQuery } from 'redux/myContactsSlice';
 import { useAddContactMutation } from 'redux/myContactsSlice';
 import ContactList from 'components/ContactList';
-import { getIsLoggedIn } from 'redux/authSlice';
+import authSelectors from 'redux/authSelectors';
 import { Link } from 'react-router-dom';
 
-export const ContactsView = () => {
+export default function ContactsView() {
   const [filter, setFilter] = useState('');
   const { data: contacts } = useGetContactQuery();
   const [addMyContact, { isLoading }] = useAddContactMutation();
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const addContact = value => {
     for (const contact of contacts) {
@@ -64,4 +64,4 @@ export const ContactsView = () => {
       <Toaster />
     </Container>
   );
-};
+}

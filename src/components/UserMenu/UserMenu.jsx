@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import { getUsername } from 'redux/authSlice';
+// import { getUsername } from 'redux/authSlice';
+import authSelectors from 'redux/authSelectors';
 import { useLogoutMutation } from 'redux/authAPI';
 import defaultAvatar from './default-avatar.png';
 
@@ -19,7 +20,7 @@ const styles = {
 
 export default function UserMenu() {
   const [logOut] = useLogoutMutation();
-  const name = useSelector(getUsername);
+  const name = useSelector(authSelectors.getUsername);
   const avatar = defaultAvatar;
 
   return (

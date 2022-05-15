@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { TextField, Button, Typography, Paper, Box, Grid } from '@mui/material';
 import { useRegisterMutation } from 'redux/authAPI';
+import { Container } from './RegisterView.styled';
 
 export default function RegisterView() {
   const [registerUser] = useRegisterMutation();
@@ -34,16 +35,17 @@ export default function RegisterView() {
   };
 
   return (
-    <>
+    <Container>
       <Paper
         elevation={3}
         sx={{
-          width: 450,
+          margin: 3,
+          width: 'auto',
         }}
       >
         <Box
           sx={{
-            width: 400,
+            width: 'auto',
           }}
           px={3}
           py={2}
@@ -109,6 +111,6 @@ export default function RegisterView() {
           </Box>
         </Box>
       </Paper>
-    </>
+    </Container>
   );
 }

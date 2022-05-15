@@ -24,7 +24,6 @@ export const Container = styled.div`
 `;
 
 export const Nav = styled.nav`
-  -webkit-box-shadow: 0px 10px 13px -7px #000000,
-    5px 5px 15px 5px rgba(77, 77, 77, 0);
-  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(77, 77, 77, 0);
+  box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
+    0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
 `;
