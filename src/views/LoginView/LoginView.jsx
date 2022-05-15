@@ -1,29 +1,21 @@
 import { useLoginMutation } from 'redux/authAPI';
+import { TextField, Button, Typography, Paper, Box, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {
-  Form,
-  Input,
-  Submit,
-  ErrorMessage,
-  Container,
-} from './LoginView.styled';
-
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email('Invalid email format')
-    .required('Mail is required'),
-  password: yup
-    .string()
-    .required('No password provided.')
-    .min(8, 'Password is too short - should be 8 chars minimum.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
-});
+import { Container, FormWrapper } from './LoginView.styled';
 
 export default function LoginView() {
   const [logIn] = useLoginMutation();
+
+  const validationSchema = yup.object().shape({
+    email: yup.string().required('Email is required').email('Email is invalid'),
+    password: yup
+      .string()
+      .required('Password is required')
+      .min(6, 'Password must be at least 6 characters')
+      .max(40, 'Password must not exceed 40 characters'),
+  });
 
   const {
     register,
@@ -31,32 +23,81 @@ export default function LoginView() {
     resetField,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = values => {
-    logIn(values);
+  const onSubmit = data => {
+    logIn(data);
     resetField('email');
     resetField('password');
   };
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="email">Email</label>
-        <Input type="text" id="email" name="email" {...register('email')} />
-        <ErrorMessage>{errors.email?.message}</ErrorMessage>
+      <FormWrapper>
+        <Paper
+          elevation={3}
+          sx={{
+            margin: 3,
+            width: 'auto',
+          }}
+        >
+          <Box
+            sx={{
+              width: 'auto',
+            }}
+            px={3}
+            py={2}
+          >
+            <Grid>
+              <Grid item xs={5} sm={5}>
+                <TextField
+                  required
+                  id="email"
+                  name="email"
+                  label="Email"
+                  size="small"
+                  fullWidth
+                  margin="dense"
+                  {...register('email')}
+                  error={errors.email ? true : false}
+                />
+                <Typography variant="inherit" color="textSecondary">
+                  {errors.email?.message}
+                </Typography>
+              </Grid>
+              <Grid item xs={5} sm={5}>
+                <TextField
+                  required
+                  id="password"
+                  name="password"
+                  label="Password"
+                  type="password"
+                  size="small"
+                  fullWidth
+                  margin="dense"
+                  {...register('password')}
+                  error={errors.password ? true : false}
+                />
+                <Typography variant="inherit" color="textSecondary">
+                  {errors.password?.message}
+                </Typography>
+              </Grid>
+            </Grid>
 
-        <label htmlFor="password">Password</label>
-        <Input
-          type="password"
-          name="password"
-          id="password"
-          {...register('password')}
-        />
-        <ErrorMessage>{errors.number?.message}</ErrorMessage>
-        <Submit type="submit">Log in</Submit>
-      </Form>
+            <Box mt={3}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={handleSubmit(onSubmit)}
+              >
+                Log in
+              </Button>
+            </Box>
+          </Box>
+        </Paper>
+      </FormWrapper>
     </Container>
   );
 }

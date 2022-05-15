@@ -1,6 +1,7 @@
-import { Item } from './ContactListItem.styled';
+import { Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useDeleteContactMutation } from 'redux/myContactsSlice';
-import { RotatingLines } from 'react-loader-spinner';
+import { Item, Link, ContactWrapper } from './ContactListItem.styled';
 
 export const ContactListItem = ({ id, name, number }) => {
   const [deleteContacts, { isLoading: isDeleting }] =
@@ -8,14 +9,20 @@ export const ContactListItem = ({ id, name, number }) => {
 
   return (
     <Item>
-      {name}: {number}
-      <button
-        type="button"
-        disabled={isDeleting}
-        onClick={() => deleteContacts(id)}
-      >
-        {isDeleting && <RotatingLines width="10" />} Delete
-      </button>
+      <p>{name}</p>
+      <ContactWrapper>
+        <Link href={`tel: ${number}`}>{number}</Link>
+        <Button
+          variant="outlined"
+          color="primary"
+          startIcon={<DeleteIcon />}
+          onClick={() => deleteContacts(id)}
+          disabled={isDeleting}
+          size="small"
+        >
+          Delete
+        </Button>
+      </ContactWrapper>
     </Item>
   );
 };

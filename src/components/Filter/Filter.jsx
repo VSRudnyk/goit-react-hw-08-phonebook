@@ -12,14 +12,8 @@ export const Filter = ({ value, onChange }) => {
         onChange={onChange}
         value={value}
         autoComplete="off"
+        size="small"
       />
-      {/* <Input
-        type="text"
-        id="filter"
-        onChange={onChange}
-        value={value}
-        autoComplete="off"
-      /> */}
     </Container>
   );
 };
