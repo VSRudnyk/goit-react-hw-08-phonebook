@@ -1,14 +1,26 @@
 {
   "files": {
     "main.css": "/goit-react-hw-08-phonebook/static/css/main.7acaea2f.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.3f2e2c6a.js",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.a995bffa.js",
+    "static/js/634.fca5a1b2.chunk.js": "/goit-react-hw-08-phonebook/static/js/634.fca5a1b2.chunk.js",
+    "static/js/850.59a7dde9.chunk.js": "/goit-react-hw-08-phonebook/static/js/850.59a7dde9.chunk.js",
+    "static/js/210.9e81e16d.chunk.js": "/goit-react-hw-08-phonebook/static/js/210.9e81e16d.chunk.js",
+    "static/js/31.9cf4179d.chunk.js": "/goit-react-hw-08-phonebook/static/js/31.9cf4179d.chunk.js",
+    "static/js/693.6dcfb50f.chunk.js": "/goit-react-hw-08-phonebook/static/js/693.6dcfb50f.chunk.js",
+    "static/js/385.d46c80a2.chunk.js": "/goit-react-hw-08-phonebook/static/js/385.d46c80a2.chunk.js",
     "static/media/default-avatar.png": "/goit-react-hw-08-phonebook/static/media/default-avatar.e44fc4e22a4ce55fbe43.png",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
     "main.7acaea2f.css.map": "/goit-react-hw-08-phonebook/static/css/main.7acaea2f.css.map",
-    "main.3f2e2c6a.js.map": "/goit-react-hw-08-phonebook/static/js/main.3f2e2c6a.js.map"
+    "main.a995bffa.js.map": "/goit-react-hw-08-phonebook/static/js/main.a995bffa.js.map",
+    "634.fca5a1b2.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/634.fca5a1b2.chunk.js.map",
+    "850.59a7dde9.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/850.59a7dde9.chunk.js.map",
+    "210.9e81e16d.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/210.9e81e16d.chunk.js.map",
+    "31.9cf4179d.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/31.9cf4179d.chunk.js.map",
+    "693.6dcfb50f.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/693.6dcfb50f.chunk.js.map",
+    "385.d46c80a2.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/385.d46c80a2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.3f2e2c6a.js"
+    "static/js/main.a995bffa.js"
   ]
 }
