@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import { useAddContactMutation } from 'redux/myContactsSlice';
 import { TextField, Button, Typography, Paper, Box, Grid } from '@mui/material';
-import { Container } from './ContactForm.styled';
+import { FormWrapper } from './ContactForm.styled';
 
 export const ContactForm = ({ addContact }) => {
   const { isLoading } = useAddContactMutation();
@@ -36,7 +36,7 @@ export const ContactForm = ({ addContact }) => {
   };
 
   return (
-    <Container>
+    <FormWrapper onSubmit={handleSubmit(onSubmit)}>
       <Paper
         elevation={3}
         sx={{
@@ -90,7 +90,7 @@ export const ContactForm = ({ addContact }) => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleSubmit(onSubmit)}
+              type="submit"
               disabled={isLoading}
               size="small"
             >
@@ -99,7 +99,7 @@ export const ContactForm = ({ addContact }) => {
           </Box>
         </Box>
       </Paper>
-    </Container>
+    </FormWrapper>
   );
 };
 

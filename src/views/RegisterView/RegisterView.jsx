@@ -36,7 +36,7 @@ export default function RegisterView() {
 
   return (
     <Container>
-      <FormWrapper>
+      <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <Paper
           elevation={3}
           sx={{
@@ -109,7 +109,7 @@ export default function RegisterView() {
                 variant="contained"
                 color="primary"
                 size="small"
-                onClick={handleSubmit(onSubmit)}
+                type="submit"
               >
                 Register
               </Button>

@@ -9,6 +9,6 @@ export const Container = styled.div`
   padding-right: 15px;
 `;
 
-export const FormWrapper = styled.div`
+export const FormWrapper = styled.form`
   width: 450px;
 `;

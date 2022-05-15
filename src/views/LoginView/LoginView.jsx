@@ -34,7 +34,7 @@ export default function LoginView() {
 
   return (
     <Container>
-      <FormWrapper>
+      <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <Paper
           elevation={3}
           sx={{
@@ -87,10 +87,10 @@ export default function LoginView() {
 
             <Box mt={3}>
               <Button
+                type="submit"
                 variant="contained"
                 color="primary"
                 size="small"
-                onClick={handleSubmit(onSubmit)}
               >
                 Log in
               </Button>

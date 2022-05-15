@@ -7,6 +7,6 @@ export const Container = styled.div`
   margin-top: 25px;
 `;
 
-export const FormWrapper = styled.div`
+export const FormWrapper = styled.form`
   width: 450px;
 `;
