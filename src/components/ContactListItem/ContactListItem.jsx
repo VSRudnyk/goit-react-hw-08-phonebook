@@ -1,11 +1,17 @@
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import toast from 'react-hot-toast';
 import { useDeleteContactMutation } from 'redux/myContactsSlice';
 import { Item, Link, ContactWrapper } from './ContactListItem.styled';
 
 export const ContactListItem = ({ id, name, number }) => {
   const [deleteContacts, { isLoading: isDeleting }] =
     useDeleteContactMutation();
+
+  const handelDeleteContact = id => {
+    deleteContacts(id);
+    toast.success(`Contact ${name} deleted`);
+  };
 
   return (
     <Item>
@@ -16,7 +22,7 @@ export const ContactListItem = ({ id, name, number }) => {
           variant="outlined"
           color="primary"
           startIcon={<DeleteIcon />}
-          onClick={() => deleteContacts(id)}
+          onClick={() => handelDeleteContact(id)}
           disabled={isDeleting}
           size="small"
         >
